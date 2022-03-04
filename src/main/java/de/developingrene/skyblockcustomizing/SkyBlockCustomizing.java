@@ -18,5 +18,6 @@ public final class SkyBlockCustomizing extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        httpServer.stop();
     }
 }

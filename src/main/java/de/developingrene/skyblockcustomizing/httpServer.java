@@ -26,11 +26,13 @@ public class httpServer {
     static class testHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
+            String[] ver = Bukkit.getServer().getBukkitVersion().split("-");
             String json = "{\n";
-            json += "\"Online\": true,\n";
-            json += "\"Name\": "+ Bukkit.getServer().getName() +",\n";
-            json += "\"Version\": "+Bukkit.getVersion()+",\n";
-            json += "\"OnlinePlayers\": "+Bukkit.getOnlinePlayers().size()+"\n";
+            json += "\"Online\": \"true\",\n";
+            json += "\"Name\": \""+ Bukkit.getServer().getName() +"\",\n";
+            json += "\"Version\": \""+ver[0]+"\",\n";
+            json += "\"OnlinePlayers\": \""+Bukkit.getOnlinePlayers().size()+"\"\n";
+            json += "\"MaxPlayers\": \""+Bukkit.getMaxPlayers()+"\"\n";
             json += "}";
             exchange.sendResponseHeaders(200, json.length());
             OutputStream os = exchange.getResponseBody();
