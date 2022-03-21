@@ -1,4 +1,4 @@
-name: SkyBlockCustomizing
+name: SkyBlockSystem
 version: '${project.version}'
 main: de.developingrene.skyblockcustomizing.SkyBlockCustomizing
 api-version: 1.14
@@ -6,3 +6,7 @@ prefix: SBT
 authors: [ Rene ]
 description: desc
 website: web
+commands:
+  is:
+  item:
+  shop:
