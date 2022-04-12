@@ -40,11 +40,11 @@ public class Manager {
                 p.sendMessage("§r[ SkyBlock §r] §eErstelle Insel...");
                 createIsland(p);
                 p.sendMessage("§r[ SkyBlock §r] §aTeleportiere...");
-                p.teleport(getIslandSpawn(p));
+                IslandsAPI.PlayerIsland.TeleportPlayerToIsland(p);
                 p.sendMessage("§r[ SkyBlock §r] §aDu wurdest zu deiner Insel Teleportiert.");
             } else {
                 p.sendMessage("§r[ SkyBlock §r] §aTeleportiere...");
-                p.teleport(getIslandSpawn(p));
+                IslandsAPI.PlayerIsland.TeleportPlayerToIsland(p);
                 p.sendMessage("§r[ SkyBlock §r] §aDu wurdest zu deiner Insel Teleportiert.");
             }
         } else if (request.equalsIgnoreCase("island-settings")) {
@@ -64,7 +64,7 @@ public class Manager {
         } else if (request.equalsIgnoreCase("island-delete")) {
             if (isPlayerExists(p)) {
                 p.sendMessage("§r[ SkyBlock §r] §4Lösche Insel...");
-                deleteIsland(p);
+                IslandsAPI.PlayerIsland.DeletePlayersIsland(p);
                 p.sendMessage("§r[ SkyBlock §r] §aDeine Insel wurde gelöscht.");
             } else {
                 p.sendMessage("§r[ SkyBlock §r] §cDu hast noch keine Insel.");
@@ -100,16 +100,6 @@ public class Manager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static Location getIslandSpawn (Player p){
-        return new Location(Bukkit.getWorld(getConf().getString("position.world")), getConf().getDouble("position.x"), getConf().getDouble("position.y"), getConf().getDouble("position.z"));
-    }
-
-    private static void deleteIsland (Player p){
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "mv delete is-" + p.getUniqueId());
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "mv confirm");
-        file.delete();
     }
 
     private static boolean isPlayerExists (Player p){

@@ -4,6 +4,7 @@ import de.developingrene.skyblockcustomizing.isMenu.mainMenu;
 import de.developingrene.skyblockcustomizing.isMenu.Command;
 import de.developingrene.skyblockcustomizing.isMenu.managementMenu;
 import de.developingrene.skyblockcustomizing.shops.Manager;
+import de.developingrene.skyblockcustomizing.warp.UserCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SkyBlockCustomizing extends JavaPlugin {
@@ -19,8 +20,10 @@ public final class SkyBlockCustomizing extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new managementMenu(), this);
         httpServer.CC();
         getCommand("is").setExecutor(new Command());
+        getCommand("texturepack").setExecutor(new TexturepackCommand());
         getCommand("item").setExecutor(new de.developingrene.skyblockcustomizing.items.Command());
         getCommand("shop").setExecutor(new de.developingrene.skyblockcustomizing.shops.Command());
+        getCommand("warp").setExecutor(new UserCommand());
         try {
             httpServer.start(null);
         } catch (Exception e) {

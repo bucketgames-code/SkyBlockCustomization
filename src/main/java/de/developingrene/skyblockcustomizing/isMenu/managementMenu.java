@@ -1,6 +1,6 @@
 package de.developingrene.skyblockcustomizing.isMenu;
 
-import de.developingrene.skyblockcustomizing.islands.Manager;
+import de.developingrene.skyblockcustomizing.islands.IslandsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -43,7 +43,9 @@ public class managementMenu implements Listener {
             if (e.getWhoClicked().getOpenInventory().getTitle().equalsIgnoreCase("Island Settings")){
                 e.setCancelled(true);
                 if (e.getCurrentItem().getType().equals(Material.CAULDRON)){
-                    new Manager().doAction(p,"island-delete");
+                    IslandsAPI.PlayerIsland.DeletePlayersIsland(p);
+                    p.getInventory().clear();
+                    p.closeInventory();
                 } else if (e.getCurrentItem().getType().equals(null)){
                     e.setCancelled(false);
                 } else {

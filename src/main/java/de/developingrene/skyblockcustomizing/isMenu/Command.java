@@ -8,7 +8,7 @@ public class Command implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         Player p = (Player) sender;
-        p.openInventory(mainMenu.PanelBuilder());
+        p.openInventory(mainMenu.PanelBuilder(p));
         return false;
     }
 }
